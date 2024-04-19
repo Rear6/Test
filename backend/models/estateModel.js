@@ -1,58 +1,59 @@
-import mongoose from "mongoose";
+
+import mongoose from "mongoose"; 
 const Schema = mongoose.Schema;
 
-const estateSchema = new Schema(
-  {
-    firstName: {
-      type: String,
-      required: true,
-    },
-    lastName: {
-      type: String,
-      required: true,
-    },
-    userEmail: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: true,
+const estateSchema = new Schema({
+    name: {
+        type: String,
+        required: true
     },
     city: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    phoneNumber: {
-      type: Number,
-      required: true,
-    },
-    type: {
-      type: String,
-      required: true,
+        type: String,
+        required: true
     },
     saleOrRent: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
-    rating: {
-      type: Number,
-      default: 2.5,
+    userEmail: {
+        type: String,
+        required: true,
+    },
+    phoneNumber: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
     },
     price: {
         type: Number,
+        required: true,
+        default: 0
+    },
+    rating: {
+        type: Number,
+        default: 0,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    image: {
+        type: String,
+        required: true
+    },
+    numReviews: {
+        type: String,
         required: true
     }
-  },
-  {
+}, {
     timestamps: true,
-  }
-);
+});
 
-const Estate = mongoose.model("Estate", estateSchema);
+const Estate = mongoose.model('Estate', estateSchema);
+
 
 export default Estate;

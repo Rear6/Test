@@ -12,17 +12,9 @@ const postAtSchema = new Schema({
     type: String,
     required: true
   }, 
-  userEmail: {
+  email: {
     type: String,
     required: true
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  city: {
-    type: String,
-    required: true,
   },
   message: {
     type: String,
@@ -39,10 +31,6 @@ const postAtSchema = new Schema({
   saleOrRent: {
     type: String,
     required:true
-  },
-  rating: {
-    type: Number,
-    default:2.5,    
   }
 },{
     timestamps: true

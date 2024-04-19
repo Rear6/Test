@@ -8,10 +8,6 @@ const favouriteSchema = new Schema({
     //     required: true,
     //     ref: "Estate",
     // },
-    userId: {
-        type: String,
-        required: true
-    },
     id: {
         type: String,
         required: true

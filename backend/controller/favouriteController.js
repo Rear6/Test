@@ -6,9 +6,9 @@ import Favourite from "../models/favouriteModel.js";
 // route POST /api/favourites
 // @access private
 const addFavourites = asyncHandler(async(req, res) => {
-    const {id, userId} = req.body;
+    const {id} = req.body;
  
-    const existId = await Favourite.findOne({id, userId});
+    const existId = await Favourite.findOne({id});
     
     if(existId){
         throw new Error("Same Image already exists");       
@@ -17,11 +17,10 @@ const addFavourites = asyncHandler(async(req, res) => {
     // Favourite.create({id}).then((e) => {
     //     console.log(e)
     // })
-    const favourite = await Favourite.create({id, userId});
+    const favourite = await Favourite.create({id});
     
     if(favourite){
         res.json({
-            userId: favourite.userId,
             id: favourite.id
         })
     }else{
@@ -34,11 +33,7 @@ const addFavourites = asyncHandler(async(req, res) => {
 // route GET /api/favourites
 // @access private
 const getFavouriteId = asyncHandler( async(req, res) => {
-    let sess = req.session;
-    const favo_ids = await Favourite.find({userId: sess.userId})
-    
-    // console.log(sess.userId);
-    // console.log(favo_ids);
+    const favo_ids = await Favourite.find({})
     if(favo_ids){
         res.status(200);
         res.json(favo_ids);
