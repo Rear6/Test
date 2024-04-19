@@ -1,36 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaHome, FaUser, FaHeart, FaSearch, FaPencilAlt, FaUserCircle, FaSignOutAlt } from 'react-icons/fa'
-import { BiMoon, BiSun } from 'react-icons/bi';
 import logo from '../assets/images/logo.png'
 import { useLogoutMutation } from '../store/slices/usersApiSlice'
 import { logout } from '../store/slices/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-// import { LinkContainer } from 'react-router-bootstrap'
-import { Button } from 'react-bootstrap'
-import { setDarkMode } from '../store/slices/darkSlice';
+import { LinkContainer } from 'react-router-bootstrap'
+import { Row, Col, Nav, Navbar, Container, Badge } from 'react-bootstrap'
 
 const Header = () => {
 
     const { userInfo } = useSelector((state) => state.auth);
-    const { isDarkMode } = useSelector((state) => state.dark );
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [logoutApi] = useLogoutMutation();
-
-    useEffect(()=>{
-        if (isDarkMode === 'true') {
-            window.document.documentElement.classList.add('dark');
-        }
-    }, [isDarkMode]);
-
-    const toggleDarkMode = () => {
-        window.document.documentElement.classList.toggle('dark');
-        dispatch(setDarkMode(String(window.document.documentElement.classList.contains('dark'))));
-    };
 
     const logoutHandler = async () => {
         try {
@@ -60,7 +46,11 @@ const Header = () => {
                 </Container>
 
             </Navbar> */}
-        <header className="sticky top-0 z-10 bg-header dark:bg-gray-400 text-white h-20">
+        <header className="sticky top-0 z-10 bg-stone-700 text-white h-20"
+        style={{
+            backgroundColor: '#490112'
+        }}
+        >
             <section className="container flex items-center justify-content-between">
                 <h1 className="text-3xl font-medium">
                     <Link to="/">
@@ -74,7 +64,7 @@ const Header = () => {
                             className="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:rounded before:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:rounded after:bg-white after:transition-all after:duration-500 after:content-['']">
                         </div>
                     </button> */}
-                    <nav className="flex flex-wrap space-x-8 text-xl md:block dark:text-black" aria-label="main">
+                    <nav className="flex flex-wrap space-x-8 text-xl md:block " aria-label="main">
                         <Link to="/" className=" hover:opacity-90">
                             <FaHome className='inline mx-2' />Home
                         </Link>
@@ -110,10 +100,7 @@ const Header = () => {
                             </>
                         )}
 
-                        <Button onClick={toggleDarkMode} className=' rounded-full dark:text-black hover:opacity-90'>
-                            <BiSun className='hidden dark:block' />
-                            <BiMoon className='dark:hidden' />
-                        </Button>
+
                     </nav>
                 </div>
             </section>

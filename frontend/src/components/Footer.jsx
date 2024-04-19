@@ -2,27 +2,24 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaHome, FaSearch, FaPencilAlt } from 'react-icons/fa'
 import footer from '../assets/images/footer.png'
-import {useSelector} from 'react-redux'
 
 const Footer = () => {
-    const { isDarkMode } = useSelector((state) => state.dark );
     return (
-        <footer id="footer" className="relative text-xl text-white dark:bg-gray-400">
-            {isDarkMode==='false'?(
+        <footer id="footer"
+            className="relative text-xl text-white"
+        >
             <img src={footer}
-            alt='Footer'
-            style={{
-                position: 'absolute',
-                zIndex: -999,
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: '200px',
-                width:"100%",
-                // display: 'none',
-            }} />):(<></>)}
-            <section className="mx-auto flex max-w-4xl flex-col p-4 sm:flex-row sm:justify-between dark:text-black">
+                style={{
+                    position: 'absolute',
+                    zIndex: -999,
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '200px',
+                    width:"100%"
+                }} />
+            <section className="mx-auto flex max-w-4xl flex-col p-4 sm:flex-row sm:justify-between">
                 <address>
                     <h2>Real Estate .</h2>
                     500,000+ Property<br />

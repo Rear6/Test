@@ -11,7 +11,7 @@ const App = () => {
   return (
     <>
         <Header />
-          <main className="py-3 dark:bg-black">
+          <main className="py-3">
             <Container>
               <Outlet />
             </Container>

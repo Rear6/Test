@@ -1,6 +1,5 @@
 
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { useGetEstatesQuery } from '../store/slices/estatesApiSlice'
 import { useGetFavouriteIdQuery } from '../store/slices/favouriteSlice';
 import Loader from '../components/Loader';
@@ -11,9 +10,6 @@ const Favorite = () => {
 
     const { data: estates, isLoading, error } = useGetEstatesQuery();
     const { data: favo_ids, isLoading: favoLoading, error: favo_error } = useGetFavouriteIdQuery();
-    const { userInfo } = useSelector((state) => state.auth);
-    console.log(estates)
-    console.log(favo_ids)
    
     return (
         <>

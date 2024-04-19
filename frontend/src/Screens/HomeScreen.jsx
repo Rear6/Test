@@ -31,25 +31,19 @@ const HomeScreen = () => {
                                 compare, and secure rental properties tailored to your preferences...
                             </p>
                             <nav className="flex items-center mr-20" aria-label="mobile">
-                                <Link 
-                                to='/login'
-                                style={{zIndex:1}} 
-                                className="w3-animate-bottom flex-1 py-6 text-center hover:opacity-90 text-2xl text-danger">
+                                <Link to='/login' className="w3-animate-bottom flex-1 py-6 text-center hover:opacity-90 text-2xl text-danger">
                                     <FaUser className='inline mx-2' />Log In
                                 </Link>
-                                <Link 
-                                to="/signup"
-                                style={{zIndex:1}} 
-                                className="w3-animate-bottom flex-1 py-6 text-center hover:opacity-90 text-danger text-2xl">
+                                <Link to="/signup" className="w3-animate-bottom flex-1 py-6 text-center hover:opacity-90 text-danger text-2xl">
                                     <FaUserCircle className='inline mx-2' />Sign Up
                                 </Link>
                             </nav>
                             <img src={svg} className='w3-spin' alt='svg'
                                 style={{
                                     position: 'absolute',
-                                    width: "500px",
-                                    left: "-10%",
-                                    zIndex: 0,
+                                    width: "560px",
+                                    left: "-50%",
+                                    zIndex: -99999,
                                 }}
                             />
                             <img src={svg} className='w3-spin w3-anmate-fading' alt='svg'
@@ -57,20 +51,21 @@ const HomeScreen = () => {
                                     position: 'absolute',
                                     bottom: 0,
                                     top: "60px",
-                                    width: "500px",
+                                    width: "560px",
                                     right: "-10%",
-                                    zIndex: 0,
+                                    zIndex: -99999,
                                 }}
                             />
                             <img src={svg} className='w3-spin' alt='svg'
                                 style={{
                                     position: 'absolute',
                                     top: "-90px",
-                                    width: "500px",
+                                    width: "560px",
                                     left: "-40%",
-                                    zIndex: 0,
+                                    zIndex: -99999,
                                 }}
                             />
+
                         </article>
                         <img
                             style={{
@@ -80,9 +75,13 @@ const HomeScreen = () => {
                             className="w-1/2 bg-right-top w3-animate-top"
                             src={building} alt="Building" />
                     </section>
+
                     <hr className="mx-auto w-1/2 bg-black dark:bg-white" />
                     <hr className="mx-auto w-1/2 bg-black dark:bg-white" />
+
+
                     <h1 className='text-4xl font-semibold text-info'>Latest Real Estates</h1>
+
                     <Row>
                         {estates.map((estate) => (
                             <Col key={estate._id} sm={12} md={6} lg={4} xl={3} >
