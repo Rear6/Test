@@ -6,19 +6,25 @@ import generateToken from '../utils/generateToken.js';
 // @Route Post /api/users/login
 // @Access Public
 const authUser = asyncHandler(async (req, res) => {
+    let sess = req.session;
     const {
         email,
         password
     } = req.body;
-    
+  
+
     const user = await User.findOne({
         email
     });
+    
     // && ( await user.matchPassword(password)) 
-    if (user) {
+   
+    if (user && ( await user.matchPassword(password)) ) {
 
         generateToken(res, user._id);
-
+        
+        sess.userId = user._id;
+        // console.log(sess);
         res.json({
             _id: user._id,
             firstName: user.firstName,
@@ -91,6 +97,7 @@ const logoutUser = asyncHandler(async (req, res) => {
         httpOnly: true,
         expires: new Date(0)
     });
+    req.session.destroy();
     res.status(200).json({
         messaage: 'Logged Out Successfully'
     });

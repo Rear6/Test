@@ -114,6 +114,7 @@ const SearchScreen = () => {
                             width: "100%",
                             marginTop: "12.5%",
                         }}
+                        className='dark:text-gray-700'
                     >Search</Button>
                 </Col>
             </Row >

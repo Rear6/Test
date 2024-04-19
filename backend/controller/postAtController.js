@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js'
 import PostAt from '../models/postAtModel.js'
+import Estate from '../models/estateModel.js';
 
 // @des Post your ad
 // @route POST /api/postat
@@ -13,21 +14,28 @@ const registerPostAt = asyncHandler( async (req, res) => {
         saleOrRent,
         phoneNumber,
         message,
-        email
+        email,
+        city,
+        image,
+        price
     } = req.body;
-    const existPostAt = await PostAt.findOne({email});
+   
+    // const existPostAt = await PostAt.findOne({email});
 
-    if(existPostAt) {
-        throw new Error("Same Data Already Exists");
-    }
-    const postat = await PostAt.create({
+    // if(existPostAt) {
+    //     throw new Error("Same Data Already Exists");
+    // }
+    const postat = await Estate.create({
         firstName,
         lastName,
-        email,
+        userEmail: email,
         phoneNumber,
-        message,
+        description: message,
         type,
-        saleOrRent
+        saleOrRent,
+        city,
+        image,
+        price,
     });
     if(postat){
         res.json({
@@ -37,7 +45,10 @@ const registerPostAt = asyncHandler( async (req, res) => {
             email: postat.email,
             message: postat.message,
             phoneNumber: postat.phoneNumber,
-            saleOrRent: postat.saleOrRent
+            saleOrRent: postat.saleOrRent,
+            city: postat.city,
+            image: postat.image,
+            price: postat.price
         });
     }else{
         res.status(400);
